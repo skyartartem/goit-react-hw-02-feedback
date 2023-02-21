@@ -1,0 +1,27 @@
+.numbers {
+  font-weight: 700;
+}
+
+.good {
+  margin: 0;
+  width: 200px;
+  padding: 16px;
+  display: block;
+  background-color: rgba(0, 128, 0, 25%);
+}
+
+.neutral {
+  margin: 0;
+  width: 200px;
+  padding: 16px;
+  display: block;
+  background-color: rgba(255, 228, 196, 60%);
+}
+
+.bad {
+  margin: 0;
+  width: 200px;
+  padding: 16px;
+  display: block;
+  background-color: rgba(255, 0, 0, 20%);
+}
