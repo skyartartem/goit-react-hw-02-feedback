@@ -2,23 +2,20 @@ import PropTypes from 'prop-types';
 import css from './Statistics.module.css';
 
 export const Statistics = ({
-  good,
-  neutral,
-  bad,
+  options,
+  statistic,
   total,
   positivePercentage,
 }) => {
   return (
     <>
-      <p className={css.good}>
-        Good: <span className={css.numbers}>{good}</span>
-      </p>
-      <p className={css.neutral}>
-        Neutral: <span className={css.numbers}>{neutral}</span>
-      </p>
-      <p className={css.bad}>
-        Bad: <span className={css.numbers}>{bad}</span>
-      </p>
+      {options.map((name, i) => {
+        return (
+            <p key={i} className={css[name]}>
+              {name}: <span className={css.numbers}>{statistic[name]}</span>
+            </p>
+        );
+      })}
       <p>
         Total: <span className={css.numbers}>{total}</span>
       </p>
@@ -31,9 +28,13 @@ export const Statistics = ({
 };
 
 Statistics.propTypes = {
-  good: PropTypes.number.isRequired,
-  neutral: PropTypes.number.isRequired,
-  bad: PropTypes.number.isRequired,
+  options: PropTypes.arrayOf(PropTypes.oneOf(['good', 'neutral', 'bad']))
+    .isRequired,
+  statistic: PropTypes.shape({
+    good: PropTypes.number.isRequired,
+    neutral: PropTypes.number.isRequired,
+    bad: PropTypes.number.isRequired,
+  }).isRequired,
   total: PropTypes.number.isRequired,
   positivePercentage: PropTypes.func.isRequired,
 };

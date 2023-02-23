@@ -7,9 +7,9 @@ import css from './App.module.css'
 
 export class App extends Component {
   state = {
-    bad: 0,
-    neutral: 0,
     good: 0,
+    neutral: 0,
+    bad: 0,
   };
 
   updateState = nameFeedback => {
@@ -34,30 +34,35 @@ export class App extends Component {
 
   render() {
     return (
-      <div className={css.container}
+      <div
+        className={css.container}
         // style={{
-          // height: '100vh',
-          // display: 'flex',
-          // flexDirection: 'column',
-          // justifyContent: 'center',
-          // alignItems: 'center',
-          // fontSize: 24,
-          // color: '#010101',
+        // height: '100vh',
+        // display: 'flex',
+        // flexDirection: 'column',
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        // fontSize: 24,
+        // color: '#010101',
         // }}
       >
         <Section title="Please leave feedback">
-          <FeedbackOptions updateState={this.updateState} />
+          <FeedbackOptions
+            options={Object.keys(this.state)}
+            onLeaveFeedback={this.updateState}
+          />
         </Section>
         <Section title="Statistics">
-          {this.countTotalFeedback() === 0 ?
-            <Notification message="There is no feedback yet..." /> :
+          {this.countTotalFeedback() === 0 ? (
+            <Notification message="There is no feedback yet..." />
+          ) : (
             <Statistics
-              good={this.state.good}
-              neutral={this.state.neutral}
-              bad={this.state.bad}
+              options={Object.keys(this.state)}
+              statistic={this.state}
               total={this.countTotalFeedback()}
               positivePercentage={this.countPositiveFeedbackPercentage}
-            />}
+            />
+          )}
         </Section>
       </div>
     );

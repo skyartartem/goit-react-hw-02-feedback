@@ -3,6 +3,7 @@
 }
 
 .good {
+  text-transform: capitalize;
   margin: 0;
   width: 200px;
   padding: 16px;
@@ -11,6 +12,7 @@
 }
 
 .neutral {
+  text-transform: capitalize;
   margin: 0;
   width: 200px;
   padding: 16px;
@@ -19,6 +21,7 @@
 }
 
 .bad {
+  text-transform: capitalize;
   margin: 0;
   width: 200px;
   padding: 16px;
